@@ -1,7 +1,5 @@
-export const Profile = () => {
-  return (
-    <div>
-      <h1>Profile</h1>
-    </div>
-  );
-};
+import React from "react";
+
+export default function Profile() {
+  return <div>Profile</div>;
+}
