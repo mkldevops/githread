@@ -6,8 +6,7 @@ export default async function Home() {
   const session = await getAuthSession();
 
   return (
-    <div className="">
-      <p>{JSON.stringify(session, null, 2)}</p>
+    <div>
       <Button>Click me</Button>
       <Input />
     </div>
