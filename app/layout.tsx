@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/src/features/layout/Header";
+import { Footer } from "@/src/features/layout/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
             <div className="flex-1 max-w-lg m-auto py-12 w-full">
               {children}
             </div>
+            <Footer />
           </div>
         </ThemeProvider>
       </body>
