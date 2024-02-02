@@ -6,6 +6,8 @@ export const env = createEnv({
     NODE_ENV: z.enum(["development", "test", "production"]),
     GITHUB_ID: z.string(),
     GITHUB_SECRET: z.string(),
+    NEXTAUTH_SECRET: z.string(),
+    NEXTAUTH_URL: z.string(),
   },
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
@@ -14,5 +16,7 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     GITHUB_ID: process.env.GITHUB_ID,
     GITHUB_SECRET: process.env.GITHUB_SECRET,
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
 });

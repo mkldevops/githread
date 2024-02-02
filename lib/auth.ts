@@ -11,6 +11,15 @@ export const authOptions = {
     GithubProvider({
       clientId: env.GITHUB_ID,
       clientSecret: env.GITHUB_SECRET,
+      profile(profile) {
+        return {
+          id: profile.id.toString(),
+          username: profile.login,
+          name: profile.name,
+          email: profile.email,
+          image: profile.avatar_url,
+        };
+      },
     }),
     // ...add more providers here
   ],
@@ -22,6 +31,7 @@ export const authOptions = {
       return session;
     },
   },
+  secret: env.NEXTAUTH_SECRET,
 };
 
 export const getAuthSession = async () => {
