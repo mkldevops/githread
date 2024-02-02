@@ -13,18 +13,18 @@ datasource db {
 // next auth schema
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  
-  access_token       String?  
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -55,6 +55,54 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+
+  username      String    @unique
+  bio           String?
+  link         String?
+  createdAt     DateTime  @default(now())
+
+  followers     Follow[]  @relation("follower")
+  followeds     Follow[]  @relation("followed")
+  posts         Post[]
+  likes         Like[]
+
   accounts      Account[]
   sessions      Session[]
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  parentId  String?
+  userId    String
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  likes   Like[]
+  replies Post[] @relation("comments")
+  parent  Post?  @relation("comments", fields: [parentId], references: [id], onDelete: Cascade)
+}
+
+model Follow {
+  id          String   @id @default(cuid())
+  followerId  String
+  followingId String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  follower User @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
+  followed User @relation("followed", fields: [followingId], references: [id], onDelete: Cascade)
+}
+
+model Like {
+  id        String   @id @default(cuid())
+  userId    String
+  postId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User     @relation(fields: [userId], references: [id])
+  Post      Post     @relation(fields: [postId], references: [id])
 }
