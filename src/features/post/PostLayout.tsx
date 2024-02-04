@@ -9,8 +9,8 @@ import { PropsWithChildren } from "react";
 
 type PostLayoutProps = PropsWithChildren<{
   user: PostHome["user"];
-  postId: string;
-  createdAt: Date;
+  postId?: string;
+  createdAt?: Date;
   className?: string;
 }>;
 
