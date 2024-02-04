@@ -1,9 +1,10 @@
 "use client";
 
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { Loader } from "@/components/ui/loader";
-import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
 import { LogOut } from "lucide-react";
 import { signOut } from "next-auth/react";
+import Link from "next/link";
 import { useTransition } from "react";
 
 export const DropdownMenuItemLogout = () => {
@@ -14,16 +15,13 @@ export const DropdownMenuItemLogout = () => {
       onClick={() => {
         startTransition(() => signOut());
       }}
-      asChild
     >
-      <span>
-        {isPending ? (
-          <Loader className="mr-2 h-4 w-4" />
-        ) : (
-          <LogOut className="mr-2 h-4 w-4" />
-        )}
-        Log out
-      </span>
+      {isPending ? (
+        <Loader className="mr-2 h-4 w-4" />
+      ) : (
+        <LogOut className="mr-2 h-4 w-4" />
+      )}
+      Log out
     </DropdownMenuItem>
   );
 };

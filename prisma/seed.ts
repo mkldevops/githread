@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 const main = async () => {
   const users = [];
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 20; i++) {
     const user = {
       email: faker.internet.email(),
       username: faker.internet.userName(),
@@ -24,12 +24,16 @@ const main = async () => {
   for (let index = 0; index < 100; index++) {
     const randomUserIndex = faker.number.int({ min: 0, max: users.length - 1 });
 
-    const randomWorldCount = faker.number.int({ min: 0, max: 100 });
+    const randomWorldCount = faker.number.int({
+      min: 5,
+      max: 12,
+    });
 
     const post = {
-      content: faker.lorem.paragraphs(randomWorldCount),
+      content: faker.lorem.sentence(randomWorldCount),
       published: true,
       userId: users[randomUserIndex].id,
+      createdAt: faker.date.recent(),
     } satisfies Prisma.PostUncheckedCreateInput;
 
     const postDb = await prisma.post.create({ data: post });
