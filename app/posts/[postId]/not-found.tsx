@@ -4,27 +4,15 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { buttonVariants } from "@/components/ui/button";
 import { AlertTriangle } from "lucide-react";
 import Link from "next/link";
-import { useEffect } from "react";
 
-export default function Error({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string };
-  reset: () => void;
-}) {
-  useEffect(() => {
-    // Log the error to an error reporting service
-    console.error(error);
-  }, [error]);
-
+export default function NotFound() {
   return (
     <div className="px-4">
       <Alert className="my-8" variant="destructive">
         <AlertTriangle />
-        <AlertTitle>Not logged</AlertTitle>
+        <AlertTitle>Not Found</AlertTitle>
         <AlertDescription>
-          You need to be logged in to access this page.
+          The post you are looking for does not exist.
         </AlertDescription>
         <Link href="/" className={buttonVariants({ variant: "link" })}>
           Home
