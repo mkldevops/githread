@@ -22,7 +22,7 @@ export type WritePostFormValues = z.infer<typeof Schema>;
 
 type WritePostFormProps = {
   user: User;
-  onSubmit: (values: WritePostFormValues) => void;
+  onSubmit: (values: WritePostFormValues) => Promise<string>;
 };
 
 export const WritePostForm = ({ user, onSubmit }: WritePostFormProps) => {
@@ -36,7 +36,8 @@ export const WritePostForm = ({ user, onSubmit }: WritePostFormProps) => {
       <Form
         form={form}
         onSubmit={async (values) => {
-          //
+          const postId = await onSubmit(values);
+          router.push(`/posts/${postId}`);
         }}
       >
         <FormField

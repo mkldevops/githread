@@ -4,7 +4,6 @@ import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { Loader } from "@/components/ui/loader";
 import { LogOut } from "lucide-react";
 import { signOut } from "next-auth/react";
-import Link from "next/link";
 import { useTransition } from "react";
 
 export const DropdownMenuItemLogout = () => {
