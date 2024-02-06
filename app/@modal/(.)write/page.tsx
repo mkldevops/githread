@@ -7,7 +7,7 @@ export default async function ModalWritePage() {
 
   return (
     <div>
-      <WriteModal user={user} createPost={createPost} />
+      <WriteModal path="write" user={user} createPost={createPost} />
     </div>
   );
 }

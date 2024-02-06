@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { PostHome } from "@/src/query/post.query";
 import { Heart, MessageCircle } from "lucide-react";
 import Link from "next/link";
@@ -18,9 +18,12 @@ export const Post = ({ post }: PostProps) => {
         <Button variant="ghost" size="icon">
           <Heart size={20} />
         </Button>
-        <Button variant="ghost" size="icon">
+        <Link
+          href={`/posts/${post.id}/reply`}
+          className={buttonVariants({ variant: "link", size: "icon" })}
+        >
           <MessageCircle size={20} />
-        </Button>
+        </Link>
       </div>
       <div>
         <Link href={`/post/${post.id}`} className="text-sm text-foreground">

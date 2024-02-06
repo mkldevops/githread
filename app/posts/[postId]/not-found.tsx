@@ -2,7 +2,7 @@
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { buttonVariants } from "@/components/ui/button";
-import { AlertTriangle } from "lucide-react";
+import { AlertTriangle, Home } from "lucide-react";
 import Link from "next/link";
 
 export default function NotFound() {
@@ -15,6 +15,7 @@ export default function NotFound() {
           The post you are looking for does not exist.
         </AlertDescription>
         <Link href="/" className={buttonVariants({ variant: "link" })}>
+          <Home />
           Home
         </Link>
       </Alert>
