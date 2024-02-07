@@ -26,11 +26,11 @@ export const Post = ({ post }: PostProps) => {
         </Link>
       </div>
       <div>
-        <Link href={`/post/${post.id}`} className="text-sm text-foreground">
+        <Link href={`/posts/${post.id}`} className="text-sm text-foreground">
           {post._count.likes} likes
         </Link>
         {" • "}
-        <Link href={`/post/${post.id}`} className="text-sm text-foreground">
+        <Link href={`/posts/${post.id}`} className="text-sm text-foreground">
           {post._count.replies} replies
         </Link>
       </div>
