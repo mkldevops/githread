@@ -22,8 +22,6 @@ export const generateMetadata = async ({
     throw new Error("User not found");
   }
 
-  console.log("user", user);
-
   return {
     title: `${user?.name} (@${user?.username})`,
   };

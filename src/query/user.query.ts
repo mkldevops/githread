@@ -1,6 +1,7 @@
 import { getAuthSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
+import { cache } from "react";
 import { postSelectQuery } from "./post.query";
 
 const userSelect = {
@@ -29,7 +30,9 @@ export const getUser = async () => {
   return user;
 };
 
-export const getUserProfile = async (userId: string) => {
+export const getUserProfile = cache(async (userId: string) => {
+  console.log("Fetching user profile");
+
   return await prisma.user.findFirstOrThrow({
     where: {
       OR: [{ id: userId }, { username: userId }],
@@ -67,7 +70,7 @@ export const getUserProfile = async (userId: string) => {
       },
     },
   });
-};
+});
 
 export const getUserEdit = async () => {
   const session = await getAuthSession();

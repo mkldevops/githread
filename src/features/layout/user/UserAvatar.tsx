@@ -17,7 +17,7 @@ export const UserAvatar = ({
   ...props
 }: UserAvatarProps) => {
   return (
-    <Link href={`/users/${user.id}`}>
+    <Link href={`/users/${user.username}`}>
       <Avatar size={size} className={className} {...props}>
         {user.image ? (
           <AvatarImage src={user.image} alt={user.username ?? ""} />
