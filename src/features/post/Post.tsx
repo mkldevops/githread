@@ -1,7 +1,8 @@
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { PostHome } from "@/src/query/post.query";
-import { Heart, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import Link from "next/link";
+import { LikeButton } from "./LikeButton";
 import { PostLayout } from "./PostLayout";
 
 type PostProps = {
@@ -14,10 +15,8 @@ export const Post = ({ post }: PostProps) => {
       <Link href={`/posts/${post.id}`} className="text-sm text-foreground">
         {post.content}
       </Link>
-      <div className="fle flex-col gap-2">
-        <Button variant="ghost" size="icon">
-          <Heart size={20} />
-        </Button>
+      <div className="flex gap-2 items-center">
+        <LikeButton postId={post.id} isLiked={post.likes.length > 0} />
         <Link
           href={`/posts/${post.id}/reply`}
           className={buttonVariants({ variant: "link", size: "icon" })}

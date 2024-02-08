@@ -19,7 +19,10 @@ prisma: ## Generate prisma client
 	bun run prisma generate
 
 prisma-migrate: ## Migrate prisma
-	bun run prisma migrate dev --name "debt-free"
+	bun run prisma migrate dev
+
+prisma-studio: ## Migrate prisma
+	bun run prisma studio
 
 ## —— Linters ———————————————————————————————————
 lint: ## Run all linters

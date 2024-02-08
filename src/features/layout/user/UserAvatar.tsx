@@ -12,7 +12,7 @@ type UserAvatarProps = {
 
 export const UserAvatar = ({
   user,
-  size,
+  size = "default",
   className,
   ...props
 }: UserAvatarProps) => {

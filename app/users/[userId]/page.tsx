@@ -5,8 +5,31 @@ import { getUserProfile } from "@/src/query/user.query";
 import { notFound, redirect } from "next/navigation";
 import { Profile } from "./Profile";
 import { followUser, isFollowingUser } from "./follow.action";
+import { Metadata } from "next";
 
-export default async function page({ params }: { params: { userId: string } }) {
+type PageParamsProps = {
+  params: {
+    userId: string;
+  };
+};
+
+export const generateMetadata = async ({
+  params,
+}: PageParamsProps): Promise<Metadata> => {
+  const user = await getUserProfile(params.userId);
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  console.log("user", user);
+
+  return {
+    title: `${user?.name} (@${user?.username})`,
+  };
+};
+
+export default async function page({ params }: PageParamsProps) {
   const user = await getUserProfile(params.userId);
   const session = await getAuthSession();
 

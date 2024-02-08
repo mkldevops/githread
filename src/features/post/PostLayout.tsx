@@ -1,12 +1,11 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/date";
+import { UserProfile } from "@/src/query/user.query";
 import clsx from "clsx";
 import { MoreHorizontal } from "lucide-react";
 import Link from "next/link";
 import { PropsWithChildren } from "react";
 import { UserAvatar } from "../layout/user/UserAvatar";
-import { UserProfile } from "@/src/query/user.query";
 
 type PostLayoutProps = PropsWithChildren<{
   user: UserProfile;
