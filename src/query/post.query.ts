@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
+import { userSelect } from "./user.query";
 
 export const postSelectQuery = (userId?: string) =>
   ({
@@ -7,12 +8,7 @@ export const postSelectQuery = (userId?: string) =>
     content: true,
     createdAt: true,
     user: {
-      select: {
-        image: true,
-        username: true,
-        id: true,
-        name: true,
-      },
+      select: userSelect,
     },
     likes: {
       select: {

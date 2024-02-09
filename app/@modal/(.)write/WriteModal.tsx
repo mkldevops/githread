@@ -2,7 +2,7 @@
 
 import { WritePostForm, WritePostFormValues } from "@/app/write/WritePostForm";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { User, UserProfile } from "@/src/query/user.query";
+import { User } from "@/src/query/user.query";
 import { usePathname, useRouter } from "next/navigation";
 
 export const WriteModal = ({
@@ -10,7 +10,7 @@ export const WriteModal = ({
   createPost,
   path,
 }: {
-  user: UserProfile | User;
+  user: User;
   createPost: (values: WritePostFormValues) => Promise<string>;
   path: string;
 }) => {

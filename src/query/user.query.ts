@@ -4,7 +4,7 @@ import { Prisma } from "@prisma/client";
 import { cache } from "react";
 import { postSelectQuery } from "./post.query";
 
-const userSelect = {
+export const userSelect = {
   id: true,
   name: true,
   username: true,
@@ -26,6 +26,7 @@ export const getUser = async () => {
     where: {
       id: session.user.id,
     },
+    select: userSelect,
   });
 
   return user;

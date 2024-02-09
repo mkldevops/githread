@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/form";
 import { ContentTextArea } from "@/src/features/post/ContentTextarea";
 import { PostLayout } from "@/src/features/post/PostLayout";
-import { UserProfile } from "@/src/query/user.query";
 import { User } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
@@ -22,7 +21,7 @@ const Schema = z.object({
 export type WritePostFormValues = z.infer<typeof Schema>;
 
 type WritePostFormProps = {
-  user: UserProfile & User;
+  user: User;
   onSubmit: (values: WritePostFormValues) => Promise<string>;
 };
 

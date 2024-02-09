@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/date";
-import { UserProfile } from "@/src/query/user.query";
+import { User } from "@/src/query/user.query";
 import clsx from "clsx";
 import { MoreHorizontal } from "lucide-react";
 import Link from "next/link";
@@ -8,7 +8,7 @@ import { PropsWithChildren } from "react";
 import { UserAvatar } from "../layout/user/UserAvatar";
 
 type PostLayoutProps = PropsWithChildren<{
-  user: UserProfile;
+  user: User;
   createdAt?: Date;
   className?: string;
 }>;

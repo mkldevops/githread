@@ -11,7 +11,7 @@ type PostProps = {
 
 export const Post = ({ post }: PostProps) => {
   return (
-    <PostLayout user={post.user} postId={post.id} createdAt={post.createdAt}>
+    <PostLayout user={post.user} createdAt={post.createdAt}>
       <Link href={`/posts/${post.id}`} className="text-sm text-foreground">
         {post.content}
       </Link>
