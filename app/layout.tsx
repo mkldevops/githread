@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/src/features/layout/Header";
 import { Footer } from "@/src/features/layout/Footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,7 @@ type LayoutProps = {
 
 export default function RootLayout({ children, modal }: LayoutProps) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en">
       <body className={clsx(inter.className, "bg-background h-full")}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex flex-col h-full">
@@ -30,6 +31,7 @@ export default function RootLayout({ children, modal }: LayoutProps) {
             </div>
             <Footer />
           </div>
+          <Toaster />
           {modal}
         </ThemeProvider>
       </body>
