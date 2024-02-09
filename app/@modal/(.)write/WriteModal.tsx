@@ -2,16 +2,15 @@
 
 import { WritePostForm, WritePostFormValues } from "@/app/write/WritePostForm";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { User } from "@prisma/client";
+import { User, UserProfile } from "@/src/query/user.query";
 import { usePathname, useRouter } from "next/navigation";
-import React from "react";
 
 export const WriteModal = ({
   user,
   createPost,
   path,
 }: {
-  user: User;
+  user: UserProfile | User;
   createPost: (values: WritePostFormValues) => Promise<string>;
   path: string;
 }) => {

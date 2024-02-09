@@ -9,7 +9,6 @@ import { UserAvatar } from "../layout/user/UserAvatar";
 
 type PostLayoutProps = PropsWithChildren<{
   user: UserProfile;
-  postId?: string;
   createdAt?: Date;
   className?: string;
 }>;
@@ -18,12 +17,11 @@ export const PostLayout = ({
   className,
   user,
   createdAt,
-  postId,
   children,
 }: PostLayoutProps) => {
   return (
     <div className={clsx(className, "flex w-full flex-row items-start p-4")}>
-      <UserAvatar user={user} />
+      <UserAvatar user={user} size="default" />
       <div className="ml-4 flex w-full flex-col gap-2">
         <Link href={`/users/${user.id}`}>
           <div className="flex flex-row items-center gap-2">

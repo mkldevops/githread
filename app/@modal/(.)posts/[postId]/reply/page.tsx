@@ -1,7 +1,6 @@
-import { getUser } from "@/src/query/user.query";
-import { createPost } from "@/app/write/write-post.action";
 import { WriteModal } from "@/app/@modal/(.)write/WriteModal";
 import { createReply } from "@/app/posts/[postId]/reply/write-reply.action";
+import { getUser } from "@/src/query/user.query";
 
 export default async function ModalWritePage({
   params,

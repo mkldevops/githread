@@ -8,6 +8,7 @@ const userSelect = {
   id: true,
   name: true,
   username: true,
+  emailVerified: true,
   email: true,
   image: true,
   link: true,
@@ -85,6 +86,8 @@ export const getUserEdit = async () => {
     select: userSelect,
   });
 };
+
+export type User = NonNullable<Prisma.PromiseReturnType<typeof getUser>>;
 
 export type UserProfile = NonNullable<
   Prisma.PromiseReturnType<typeof getUserProfile>
